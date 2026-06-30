@@ -1,0 +1,55 @@
+name: Sync teams
+
+on:
+  workflow_dispatch:
+    inputs:
+      cohort_org:
+        description: "Cohort org"
+        required: true
+        type: choice
+        options:
+          - (none-yet)
+      prune:
+        description: "Off-board: remove team members no longer in teams.csv"
+        type: boolean
+        default: false
+
+jobs:
+  check-team:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify the user may run actions for THIS repo
+        env:
+          GH_TOKEN: ${{ secrets.DSL_BOT_TOKEN }}
+          ACTOR: ${{ github.actor }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Faculty have write+ on the course repos; students never do (and triggering a
+          # workflow_dispatch already requires write), so repo permission is the gate.
+          perm=$(gh api "repos/$REPO/collaborators/$ACTOR/permission" --jq '.permission' 2>/tmp/gherr || true)
+          case "$perm" in admin|write|maintain) exit 0 ;; esac
+          echo "::error::@$ACTOR lacks write on $REPO (permission='$perm'). gh api said:"
+          cat /tmp/gherr || true
+          exit 1
+
+  sync:
+    needs: check-team
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: hertie-data-science-lab/dsl-teaching-course-setup
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Sync teams
+        env:
+          GH_TOKEN: ${{ secrets.DSL_BOT_TOKEN }}
+          COHORT_ORG: ${{ inputs.cohort_org }}
+          PRUNE: ${{ inputs.prune }}
+        run: |
+          args=(--cohort-org "$COHORT_ORG")
+          [ "$PRUNE" = "true" ] && args+=(--prune)
+          python3 -m dsl_course.sync_teams "${args[@]}"
