@@ -1,0 +1,9 @@
+org: DSL-Demo-Course-E1234
+org_name: DSL Demo Course
+course_name: DSL Demo Course
+course_code: E1234
+
+# This is the persistent COURSE org - it spans many cohorts (years). People
+# (instructors/TAs) and the schedule change year to year, so they are declared
+# PER COHORT in <cohort-org>/.github/dsl-course.yml, not here. Cohorts are
+# registered separately in .github/cohort-courses-pages.yml.
