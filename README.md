@@ -1,4 +1,4 @@
-# DSL Demo Course - course control panel
+# DSL-Demo-Course-E1234 - course control panel
 
 This is the **`.github` repo** for the `DSL-Demo-Course-E1234` course org - the control panel faculty use to run
 the course. **You never need a CLI or to write code: every action is a clickable UI button.**
