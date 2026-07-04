@@ -19,6 +19,9 @@ cohort org using the GitHub Actions below_.
 | Repo | Visibility | Description |
 | --- | --- | --- |
 | [course-materials-f2025](https://github.com/DSL-Demo-Course-E1234/course-materials-f2025) | private | Course materials (lectures/readings by session) |
+| [demo-verify-lectures](https://github.com/DSL-Demo-Course-E1234/demo-verify-lectures) | private | Released course materials (enrolled students only) |
+| [demo-verify-materials](https://github.com/DSL-Demo-Course-E1234/demo-verify-materials) | private | Released course materials (enrolled students only) |
+| [demo-verify2](https://github.com/DSL-Demo-Course-E1234/demo-verify2) | private | Released course materials (enrolled students only) |
 
 ## Available actions for faculty & admin
 
