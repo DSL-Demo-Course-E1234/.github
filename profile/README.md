@@ -1,6 +1,6 @@
-# DSL Demo Course
+# DSL-Demo-Course-E1234
 
-**DSL Demo Course** - managed by the Hertie Data Science Lab.
+**DSL-Demo-Course-E1234** - managed by the Hertie Data Science Lab.
 _This page is auto-generated; edits will be overwritten on the next refresh._
 
 ## Cohorts
