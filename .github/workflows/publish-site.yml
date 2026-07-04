@@ -14,6 +14,9 @@ on:
         required: true
         type: choice
         options:
+          - demo-verify2
+          - demo-verify-materials
+          - demo-verify-lectures
           - course-materials-f2025
       readings_mode:
         description: "Readings: reading-list (citations) / actual-readings (files) / none"
