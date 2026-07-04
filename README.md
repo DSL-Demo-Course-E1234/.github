@@ -6,22 +6,26 @@ the course. **You never need a CLI or to write code: every action is a clickable
 ## Run an action
 
 Open the **[Actions tab](https://github.com/DSL-Demo-Course-E1234/.github/actions)**, pick a workflow, and click
-**Run workflow**. Buttons only show if you have write access (you're in this org's `instructors`
-or `course-admin` team). The full, annotated list of actions is on the
-**[org home page](https://github.com/DSL-Demo-Course-E1234)**.
+**Run workflow**. Buttons only show if you have write access - you're in this org's
+`course-admin` team (declared here, course-wide), or a cohort's `instructors-<tag>` team
+(declared in that cohort's own `classroom-config/people.yml`). The full, annotated list of
+actions is on the **[org home page](https://github.com/DSL-Demo-Course-E1234)**.
 
 ## Typical flow
 
 1. **New materials repo** / **New assignment** - scaffold your content repos, then fill them in.
 2. Create an empty **cohort org** for the year, add the bot as an Owner, then run **Bootstrap cohort**.
-3. Each week: **Release materials** / **Release assignment**. Students self-onboard via the cohort's
+3. Each session: **Release materials** / **Release assignment**. Students self-onboard via the cohort's
    **welcome** "Join" issue.
 4. Grading: **Grade assignment** -> **Sync gradebooks** -> **Render grades** -> **Distribute grades**.
 
 ## What's in here
 
 - `.github/workflows/` - the action buttons (seeded from the central toolkit; refreshed by **Refresh actions**).
-- `dsl-course.yml` - this course's identity (name/code). People + schedule are declared per cohort.
+- `dsl-course.yml` - this course's identity (name/code) and `course_admins` (the
+  course-wide admin SSOT, kept in sync into every cohort by **Sync membership**).
+  Instructors/TAs and the schedule are both declared per cohort instead, in that
+  cohort's own `classroom-config`.
 - `profile/README.md` - the public org landing page (auto-generated repo index).
 
 Built and kept in sync by the [DSL teaching toolkit](https://github.com/hertie-data-science-lab/dsl-teaching-course-setup).
