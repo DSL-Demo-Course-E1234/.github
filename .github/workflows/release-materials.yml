@@ -8,7 +8,7 @@ on:
         required: true
         type: choice
         options:
-          - (none-yet)
+          - course-materials-f2025
       cohort_org:
         description: "Target cohort org"
         required: true
@@ -21,17 +21,12 @@ on:
         type: choice
         options:
           - materials
-      week:
-        description: "Week number (e.g. 1)"
+      session:
+        description: "Session number (e.g. 1)"
         required: true
-      include_lectures:
-        description: "Include lectures"
-        type: boolean
-        default: true
-      include_readings:
-        description: "Include readings"
-        type: boolean
-        default: true
+      exclude:
+        description: "Space/comma-separated sections to skip (e.g. readings) - the source repo is only known once you run this, so there are no per-section toggles here"
+        required: false
       include_syllabus:
         description: "Also release the syllabus (root *syllabus* files) - overwrites"
         type: boolean
@@ -43,6 +38,7 @@ on:
 
 jobs:
   check-team:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Verify the user may run actions for THIS repo
@@ -78,17 +74,17 @@ jobs:
           SRC_REPO: ${{ inputs.source_repo }}
           COHORT_ORG: ${{ inputs.cohort_org }}
           COHORT_REPO: ${{ inputs.cohort_repo }}
-          WEEK: ${{ inputs.week }}
-          INC_LEC: ${{ inputs.include_lectures }}
-          INC_READ: ${{ inputs.include_readings }}
+          SESSION: ${{ inputs.session }}
           INC_SYL: ${{ inputs.include_syllabus }}
           INC_RM: ${{ inputs.include_readme }}
+          EXCLUDE_INPUT: ${{ inputs.exclude }}
         run: |
           gh auth setup-git
+          exclude=""
+          exclude="$EXCLUDE_INPUT"
           args=(--source-org "$SRC_ORG" --source-repo "$SRC_REPO"
-                --cohort-org "$COHORT_ORG" --cohort-repo "$COHORT_REPO" --week "$WEEK")
-          [ "$INC_LEC" = "false" ] && args+=(--no-lectures)
-          [ "$INC_READ" = "false" ] && args+=(--no-readings)
+                --cohort-org "$COHORT_ORG" --cohort-repo "$COHORT_REPO"
+                --session "$SESSION" --exclude "$exclude")
           [ "$INC_SYL" = "true" ] && args+=(--syllabus)
           [ "$INC_RM" = "true" ] && args+=(--readme)
           python3 -m dsl_course.release "${args[@]}"
