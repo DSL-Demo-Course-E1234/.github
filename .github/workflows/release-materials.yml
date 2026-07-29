@@ -21,6 +21,13 @@ on:
           - DSL-Demo-f2025
           - DSL-Demo-f2026
           - DSL-Demo-f2027
+      release_labs:
+        description: "Release labs this session?"
+        type: boolean
+        default: true
+      labs_path:
+        description: "Where to put it - leave blank to create/use a repo named 'labs' at its root. Otherwise: first segment = repo name, rest = folder path inside it (e.g. 'materials/labs')."
+        required: false
       release_lectures:
         description: "Release lectures this session?"
         type: boolean
@@ -82,6 +89,8 @@ jobs:
           COHORT_ORG: ${{ inputs.cohort_org }}
           SESSIONS: ${{ inputs.sessions }}
           INC_ROOT: ${{ inputs.include_root_files }}
+          RELEASE_LABS: ${{ inputs.release_labs }}
+          PATH_LABS: ${{ inputs.labs_path }}
           RELEASE_LECTURES: ${{ inputs.release_lectures }}
           PATH_LECTURES: ${{ inputs.lectures_path }}
           RELEASE_READINGS: ${{ inputs.release_readings }}
@@ -90,6 +99,7 @@ jobs:
           gh auth setup-git
           args=(--source-org "$SRC_ORG" --source-repo "$SRC_REPO"
                 --cohort-org "$COHORT_ORG" --sessions "$SESSIONS")
+          [ "$RELEASE_LABS" = "true" ] && destinations="$destinations labs=${PATH_LABS:-labs}"
           [ "$RELEASE_LECTURES" = "true" ] && destinations="$destinations lectures=${PATH_LECTURES:-lectures}"
           [ "$RELEASE_READINGS" = "true" ] && destinations="$destinations readings=${PATH_READINGS:-readings}"
           [ -n "$destinations" ] && args+=(--destinations "$destinations")
