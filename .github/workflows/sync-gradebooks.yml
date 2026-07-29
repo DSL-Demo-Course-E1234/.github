@@ -11,7 +11,7 @@ on:
         required: true
         type: choice
         options:
-          - (none-yet)
+          - DSL-Demo-f2026
       dry_run:
         description: "Preview only - list the gradebook repos that WOULD be created"
         type: boolean
