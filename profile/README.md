@@ -30,6 +30,9 @@ cohort org using the GitHub Actions below_.
 
 | Repo | Visibility | Description |
 | --- | --- | --- |
+| [assignment-1-f2026](https://github.com/DSL-Demo-Course-E1234/assignment-1-f2026) | private | Assignment 1 template |
+| [assignment-2-f2026](https://github.com/DSL-Demo-Course-E1234/assignment-2-f2026) | private | Assignment 2 template |
+| [assignment-3-project-f2026](https://github.com/DSL-Demo-Course-E1234/assignment-3-project-f2026) | private | Assignment 3-project template |
 | [course-materials-f2025](https://github.com/DSL-Demo-Course-E1234/course-materials-f2025) | private | Course materials (lectures/readings by session) |
 | [course-materials-f2026](https://github.com/DSL-Demo-Course-E1234/course-materials-f2026) | private | Course materials (lectures/readings by session) |
 | [demo-verify-lectures](https://github.com/DSL-Demo-Course-E1234/demo-verify-lectures) | private | Released course materials (enrolled students only) |
