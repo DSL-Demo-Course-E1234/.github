@@ -13,7 +13,6 @@ course_code: E1234
 people:
   course_admins:
     - github_handle: "henrycgbaker"
-    - github_handle: "anotherfaculty"
 
 # Instructors/TAs are declared per cohort instead (most cohorts have different
 # lecturers/TAs) - see that cohort's classroom-config/people.yml.
