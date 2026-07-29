@@ -12,7 +12,7 @@ on:
         required: true
         type: choice
         options:
-          - (none-yet)
+          - DSL-Demo-f2026
 
 jobs:
   check-team:
