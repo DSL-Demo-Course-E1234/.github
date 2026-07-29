@@ -18,7 +18,9 @@ on:
         default: "(faculty only)"
         options:
           - (faculty only)
+          - DSL-Demo-f2025
           - DSL-Demo-f2026
+          - DSL-Demo-f2027
 
 jobs:
   check-team:
