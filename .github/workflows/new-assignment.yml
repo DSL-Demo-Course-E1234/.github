@@ -21,7 +21,7 @@ jobs:
           ACTOR: ${{ github.actor }}
           REPO: ${{ github.repository }}
         run: |
-          # Faculty have write+ on the course repos; students never do (and triggering a
+          # Faculty & instructors have write+ on the course repos; students never do (and triggering a
           # workflow_dispatch already requires write), so repo permission is the gate.
           perm=$(gh api "repos/$REPO/collaborators/$ACTOR/permission" --jq '.permission' 2>/tmp/gherr || true)
           case "$perm" in admin|write|maintain) exit 0 ;; esac
@@ -45,7 +45,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.DSL_BOT_TOKEN }}
           ORG: ${{ github.repository_owner }}
+          NUMBER: ${{ inputs.number }}
+          TAG: ${{ inputs.tag }}
         run: |
           gh auth setup-git
-          python3 -m dsl_course.scaffold assignment --org "$ORG" --number "${{ inputs.number }}" --tag "${{ inputs.tag }}"
+          python3 -m dsl_course.scaffold assignment --org "$ORG" --number "$NUMBER" --tag "$TAG"
           python3 -m dsl_course.seed refresh --course-org "$ORG"
