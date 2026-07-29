@@ -12,7 +12,9 @@ on:
         required: true
         type: choice
         options:
+          - DSL-Demo-f2025
           - DSL-Demo-f2026
+          - DSL-Demo-f2027
       dry_run:
         description: "Preview the grade emails - push nothing, send nothing"
         type: boolean
