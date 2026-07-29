@@ -16,8 +16,13 @@ on:
           - DSL-Demo-f2026
           - DSL-Demo-f2027
       assignment:
-        description: "Assignment template repo (e.g. assignment-1-f2026)"
+        description: "Assignment"
         required: true
+        type: choice
+        options:
+          - assignment-1-f2026
+          - assignment-2-f2026
+          - assignment-3-project-f2026
       include_solution:
         description: "Also push the solution (from the template's solution branch) into each student repo"
         type: boolean
