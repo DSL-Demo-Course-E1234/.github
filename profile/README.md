@@ -18,7 +18,7 @@ _This page is auto-generated; edits will be overwritten on the next refresh._
 List of cohort orgs registered to receive releases from this course org. _Auto-discovered from the
 `cohort-courses-pages.yml` registry_:
 
-_(none registered yet - run Bootstrap cohort)_
+- [DSL-Demo-f2026](https://github.com/DSL-Demo-f2026)
 
 ## Repositories
 
