@@ -1,6 +1,16 @@
 # DSL-Demo-Course-E1234
 
-**DSL-Demo-Course-E1234** - managed by the Hertie Data Science Lab.
+**DSL-Demo-Course-E1234** - the persistent **course org** for this course, managed by the Hertie Data
+Science Lab. It is the control panel: version-controlled materials + assignment templates, plus
+every faculty & instructors action button. Each year's students live in a separate **cohort org** that
+receives releases from here.
+
+> **Faculty & instructors - start here:** run everything from the
+> **[`.github` Actions tab](https://github.com/DSL-Demo-Course-E1234/.github/actions)**. New to the platform?
+> Follow the step-by-step
+> **[workflow runbooks](https://github.com/hertie-data-science-lab/dsl-teaching-course-setup/blob/main/docs/faculty-and-instructors/README.md)**.
+> The sections below are a live index of this org's cohorts, repositories, and actions.
+
 _This page is auto-generated; edits will be overwritten on the next refresh._
 
 ## Cohorts
@@ -23,7 +33,7 @@ cohort org using the GitHub Actions below_.
 | [demo-verify-materials](https://github.com/DSL-Demo-Course-E1234/demo-verify-materials) | private | Released course materials (enrolled students only) |
 | [demo-verify2](https://github.com/DSL-Demo-Course-E1234/demo-verify2) | private | Released course materials (enrolled students only) |
 
-## Available actions for faculty & admin
+## Available actions for faculty, instructors & admin
 
 All actions live in the [`.github` repo's Actions tab](https://github.com/DSL-Demo-Course-E1234/.github/actions)
 _(automatically bootstrapped from the central
@@ -36,10 +46,10 @@ _(automatically bootstrapped from the central
 - [**New materials repo**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/new-materials.yml) - scaffold a correctly-structured `course-materials-<year>` repo (session folders + the Release buttons).
 - [**New assignment**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/new-assignment.yml) - scaffold an `assignment-N-<year>` template repo (starter on `main`; the `solution` branch carries the model solution, `grading.yml`, and the hidden tests).
 - [**Refresh actions**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/refresh-actions.yml) - repopulate the cohort/session/assignment dropdowns, re-equip content repos, and rebuild this index.
-- [**Show status**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/status.yml) - a per-cohort checklist of everything configured (identity, people, manifest, schedule, roster, teams, grades, session calendar) with direct edit links for anything missing. Read-only.
+- [**Show status**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/status.yml) - a per-cohort checklist of everything configured (identity, people, schedule + release plan, roster, teams, grades) with direct edit links for anything missing. Read-only.
 
 ### Optional: public course website (open courseware)
-- [**Publish course website**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/publish-site.yml) - build/refresh a PUBLIC site `DSL-Demo-Course-E1234.github.io` that shares this course's lecture materials and readings with the world. Opt-in + manual (the first run scaffolds the site). Pick a materials repo and choose for readings: `reading-list` (citations only) or `actual-readings` (also host the files). Because the materials repos are private, the site **hosts** the shared files itself. This is separate from each cohort's student-facing site.
+- [**Publish course website**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/publish-site.yml) - build/refresh a PUBLIC site `DSL-Demo-Course-E1234.github.io` that shares this course's lecture materials and readings with the world. Opt-in (the first run scaffolds the site); afterwards a daily cron re-syncs it from the settings that run chose, so later materials edits appear without another click. Pick a materials repo and choose for readings: `reading-list` (citations only) or `actual-readings` (also host the files). Because the materials repos are private, the site **hosts** the shared files itself. This is separate from each cohort's student-facing site.
 
 ### Session cadence actions:
 - [**Release materials**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/release-materials.yml) - publish a given session's content, from every discovered section, into a cohort repo.
@@ -52,12 +62,12 @@ repo; there the `session` is a dropdown of that repo's sessions, and each discov
 own include checkbox).
 
 ### Grades (private, previewable):
-- [**Grade assignment**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/grade-assignment.yml) - faculty-side autograder: after the deadline, run the HIDDEN tests (from the template's `solution` branch) against each submission and record the machine score into `classroom-config/grades/<assignment>.csv`. Nothing is written to student repos; faculty then add manual marks. Optional per assignment (skipped if `grading.yml` sets `autograde: false`).
+- [**Grade assignment**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/grade-assignment.yml) - faculty-side autograder: after the deadline, run the HIDDEN tests (from the template's `solution` branch) against each submission and record the machine score into `classroom-config/grades/<assignment>.csv`. Nothing is written to student repos; faculty & instructors then add manual marks. Optional per assignment (skipped if `grading.yml` sets `autograde: false`).
 - [**Sync gradebooks**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/sync-gradebooks.yml) - ensure every onboarded student has a PRIVATE `grades-<handle>` repo (the single home for all their grades). Idempotent.
 - [**Render grades (preview)**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/render-grades.yml) - build per-student `gradebook/<handle>.yml` from `classroom-config/grades/<assignment>.csv` and open ONE pull request. **That PR is the preview** - review every student's grades in the diff before sending.
 - [**Distribute grades**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/distribute-grades.yml) - after merging the preview PR, copy each student's gradebook into their private repo and (unless silenced) email each student a notification to their university inbox (needs the `GRAPH_*` or `SMTP_*` secrets).
 
-- [**Scheduled release**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/scheduled-release.yml) - daily cron that auto-releases whatever each cohort's `manifests/<cohort>.yml` (in `.github`) and its `classroom-config/schedule.yml` say is due. Manual runs default to a dry-run preview ("what opens when"). Manual buttons above still work for early/ad-hoc release.
+- [**Scheduled release**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/scheduled-release.yml) - hourly cron that auto-releases whatever each cohort's `classroom-config/schedule.yml` `materials_releases:` plan says is now due (honouring each release's `when` time to the hour). Manual runs default to a dry-run preview ("what opens when"). Manual buttons above still work for early/ad-hoc release.
 
 - _[**Sync site**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/sync-site.yml) - regenerate a cohort's website from the org structure (releases do this automatically; standard workflow has no need for manual sync)._
 
@@ -86,15 +96,16 @@ they only resolve for enrolled members (deliberate).
 **The public course website** (optional) - `Publish course website` builds `DSL-Demo-Course-E1234.github.io`, a public
 open-courseware site for the course as a whole. Unlike the cohort sites it **hosts** the shared lecture
 files (the source repos are private, so links would 404); readings are published either as a text-only
-reading list or as hosted files. It is opt-in and manual - releases and refresh never touch it - so a
-public site only exists, and only updates, when you run the action.
+reading list or as hosted files. It is opt-in - releases and refresh never touch it, so a public site
+only exists once you run the action - but after that first run a daily cron re-syncs it from the
+settings you chose, so later materials edits reach it on their own.
 
 ## Repository structure (required)
 
 ```
 DSL-Demo-Course-E1234/                            <- this COURSE org (persistent)
-|-- .github/                      profile + faculty action buttons + cohort registry
-|-- course-materials-<year>/      lectures/00_.../   readings/00_.../   (+ syllabus, README)
+|-- .github/                      profile + faculty & instructors action buttons + cohort registry
+|-- course-materials-<year>/      lectures/01_.../   readings/01_.../   (+ syllabus, README)
 `-- assignment-<n>-<year>/        is_template repo:
                                     main      -> starter + autograder   (students get this)
                                     solution  -> solution/   (pushed to students on demand)
@@ -114,11 +125,11 @@ repo (via its **Bootstrap Course Org** action), and the actions above run that s
 The course-level actions assume this layout - use **New materials repo** / **New assignment** above to scaffold correctly.
 
 **Materials repo** (`course-materials-<year>`) - the source for Release materials. Any
-top-level directory containing at least one ordinal-prefixed (`00_`, `01_`, ...)
+top-level directory containing at least one ordinal-prefixed (`01_`, `02_`, `03_`, ...)
 subdirectory is a releasable section - no config to declare it:
-- `lectures/00_.../` - one folder per session's lecture files;
-- `readings/00_.../` - one folder per session's readings;
-- add more sections freely (e.g. `labs/00_.../`) - **Refresh actions** picks up new ones;
+- `lectures/01_.../` - one folder per session's lecture files;
+- `readings/01_.../` - one folder per session's readings;
+- add more sections freely (e.g. `labs/01_.../`) - **Refresh actions** picks up new ones;
 - `*syllabus*`, `README.md` at the **root** (optional) - released via the syllabus / README toggles.
 
 **Assignment repo** (`assignment-N-<year>`, an `is_template` repo) - the source for Release assignment:
