@@ -12,7 +12,7 @@ on:
         required: true
         type: choice
         options:
-          - (none-yet)
+          - DSL-Demo-f2026
       assignment:
         description: "Assignment template repo (e.g. assignment-1-f2026)"
         required: true
