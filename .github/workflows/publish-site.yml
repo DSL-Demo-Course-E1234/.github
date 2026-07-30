@@ -23,6 +23,7 @@ on:
           - demo-verify-lectures
           - demo-verify-materials
           - demo-verify2
+          - lecture-code-f2026
       readings_mode:
         description: "Readings: reading-list (citations) / actual-readings (files) / none"
         required: true
