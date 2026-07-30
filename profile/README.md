@@ -38,6 +38,7 @@ cohort org using the GitHub Actions below_.
 | [demo-verify-lectures](https://github.com/DSL-Demo-Course-E1234/demo-verify-lectures) | private | Released course materials (enrolled students only) |
 | [demo-verify-materials](https://github.com/DSL-Demo-Course-E1234/demo-verify-materials) | private | Released course materials (enrolled students only) |
 | [demo-verify2](https://github.com/DSL-Demo-Course-E1234/demo-verify2) | private | Released course materials (enrolled students only) |
+| [dsl-demo-course-e1234.github.io](https://github.com/DSL-Demo-Course-E1234/dsl-demo-course-e1234.github.io) | public | Course website (auto-deployed on push) |
 | [lecture-code-f2026](https://github.com/DSL-Demo-Course-E1234/lecture-code-f2026) | private | Lecture code package (mlfdemo) - phased release source |
 
 ## Available actions for faculty, instructors & admin
