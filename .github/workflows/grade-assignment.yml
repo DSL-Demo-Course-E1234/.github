@@ -1,10 +1,17 @@
 name: Grade assignment
 
-# Faculty-side autograder. Clones each submission as of its scheduled due date (the cohort
-# schedule's date + grace_days - SSOT, no input here), runs the HIDDEN tests
-# from the template's solution branch, archives result.json, and records the machine score
-# into the private grades CSV (faculty & instructors then add manual marks; Render + Distribute send them).
-# Nothing is written to student repos. dry_run lists what would be graded.
+# Faculty-side autograder, by hand. The hourly cron already grades each assignment ONCE at
+# its grading deadline - this button is for a deliberate re-grade. Clones each submission as
+# of the cohort schedule's grading deadline (`grading_deadline`, else due + grace_days -
+# SSOT, no input here), runs the HIDDEN tests from the template's solution branch, archives
+# result.json, and fills the machine score into the private grades CSV (faculty & instructors
+# then add manual marks; Render + Distribute send them).
+#
+# WRITE-ONCE: an `auto`/`team`/`team_grade` cell that already holds a value is never
+# overwritten, so re-running does NOT refresh scores - it only fills cells still empty. For a
+# fresh machine score, clear those cells first (and delete classroom-config/autograde/<slug>/
+# to let the cron regrade). Nothing is written to student repos. dry_run lists what would be
+# graded.
 
 on:
   workflow_dispatch:
