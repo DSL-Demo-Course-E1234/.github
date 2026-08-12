@@ -1,5 +1,8 @@
 name: Release materials
 
+# Prefer scheduling: a `materials_releases` entry in classroom-config/schedule.yml releases this
+# automatically - this button is the manual fallback.
+
 on:
   workflow_dispatch:
     inputs:
