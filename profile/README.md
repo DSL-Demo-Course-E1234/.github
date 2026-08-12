@@ -63,8 +63,8 @@ _(automatically bootstrapped from the central
 - [**Release code**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/release-code.yml) - run from the repo holding your package; copy a chosen path (a subpackage folder, or a single module file) into a cohort repo's tree, additively. Phased disclosure of a growing importable package - release a topic when you teach it.
 
 NB: alternatively each materials repo *also* carries its own **Release** buttons (run from inside the
-repo; there the `session` is a dropdown of that repo's sessions, and each discovered section gets its
-own include checkbox).
+repo; there the `session` is a dropdown of that repo's own sessions instead of free text, and the
+section checkboxes are that repo's rather than the org-wide union).
 
 ### Grades (private, previewable):
 - [**Grade assignment**](https://github.com/DSL-Demo-Course-E1234/.github/actions/workflows/grade-assignment.yml) - faculty-side autograder: after the deadline, run the HIDDEN tests (from the template's `solution` branch) against each submission and record the machine score into `classroom-config/grades/<assignment>.csv`. Nothing is written to student repos; faculty & instructors then add manual marks. Optional per assignment (skipped if `grading.yml` sets `autograde: false`).
@@ -78,14 +78,15 @@ own include checkbox).
 
 ## How the actions behave
 
-**Release materials** - run it from the materials repo (per-repo `session` dropdown, real
-checkboxes per discovered section) or from the course org's central `.github` repo (pick the
-source repo, type the session, and optionally list sections to exclude - the source repo is
-only known once you run it, so there are no per-section toggles there). It copies the *whole*
-`<section>/<NN>_.../` folders - **every file** (any number of sections, and any number of
-files per session) - into the cohort's `materials` repo (private + `students` read), nested
-under that same folder name. Only the sessions you release appear. `include_syllabus` /
-`include_readme` (default off) also copy those root files to the cohort root, overwriting.
+**Release materials** - run it from the materials repo (per-repo `session` dropdown) or from
+the course org's central `.github` control panel (pick the source repo, type the session).
+**Both** give the same per-section UI: a checkbox per discovered section plus a free-text
+destination path for each. It copies the *whole* `<section>/<NN>_.../` folders - **every file**
+(any number of sections, and any number of files per session) - into each section's destination
+in the cohort org: blank path = a repo named after the section, or `repo/subpath` to route
+several sections into one repo (e.g. `materials/lectures`). Destination repos are created on
+demand, private, with `students` **and** `auditors` read. Only the sessions you release appear. `include_root_files` (default off) also copies the syllabus +
+source README to the cohort root, overwriting.
 
 **Release assignment** - two stages: (1) it freezes a cohort-level template repo
 `<assignment>` from your `assignment-*-<year>` template; (2) it generates one private
@@ -135,7 +136,7 @@ subdirectory is a releasable section - no config to declare it:
 - `lectures/01_.../` - one folder per session's lecture files;
 - `readings/01_.../` - one folder per session's readings;
 - add more sections freely (e.g. `labs/01_.../`) - **Refresh actions** picks up new ones;
-- `*syllabus*`, `README.md` at the **root** (optional) - released via the syllabus / README toggles.
+- `*syllabus*`, `README.md` at the **root** (optional) - released via the `include_root_files` toggle.
 
 **Assignment repo** (`assignment-N-<year>`, an `is_template` repo) - the source for Release assignment:
 - **`main` branch** - the starter code only (no tests, no autograder). This is exactly what students receive (native template-generate copies `main` only).
