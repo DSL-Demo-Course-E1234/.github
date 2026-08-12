@@ -31,7 +31,7 @@ on:
         type: boolean
         default: false
       group:
-        description: "Group assignment - one repo per team (from teams.csv), all members as collaborators"
+        description: "FORCE group - one repo per team (from teams.csv). Leave unticked: a template whose grading.yml says `type: group` is already provisioned per team"
         type: boolean
         default: false
       dry_run:
