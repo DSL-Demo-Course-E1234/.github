@@ -1,6 +1,6 @@
-# DSL-Demo-Course-E1234
+# DSL Demo Course
 
-**DSL-Demo-Course-E1234** - the persistent **course org** for this course, managed by the Hertie Data
+**Machine Learning Fundamentals (Demo)** - the persistent **course org** for this course, managed by the Hertie Data
 Science Lab. It is the control panel: version-controlled materials + assignment templates, plus
 every faculty & instructors action button. Each year's students live in a separate **cohort org** that
 receives releases from here.
