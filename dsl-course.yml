@@ -19,20 +19,15 @@ course_code: E1234
 # avatars always do), OR a site-relative path to an image committed into the site
 # repo under `_images/pp/`. Institutional profile sites often return 403 to
 # off-site requests, which renders as a broken image - host those locally.
-# DEMO DATA: the `demo-*-placeholder` handles are deliberately NON-EXISTENT GitHub
-# accounts - the cards below carry real names/photos/links, but no invitation is ever
-# sent to anyone. A card is built from this file, not from GitHub, so display works
-# regardless. Swap in real handles to actually grant access (the sync logs a warning
-# and continues for a handle that does not exist).
+# DEMO DATA: demo people entries carry NO github_handle - a card is built from this
+# file, not from GitHub, so display works without one, and the sync never tries to
+# add (and therefore invite) a made-up account. Add a github_handle to actually
+# grant access.
 people:
   course_admins:
     - github_handle: "henrycgbaker"
-    - github_handle: "demo-lkaack-placeholder"
-      start: "2026-08-01"
-      end: "2027-07-31"
   instructors:
-    - github_handle: "demo-lkaack-placeholder"
-      name: "Prof. Lynn Kaack, PhD"
+    - name: "Prof. Lynn Kaack, PhD"
       title: "Assistant Professor of Computer Science and Public Policy"
       photo: "https://github.com/LynnKaack.png"
       url: "https://www.hertie-school.org/de/research/faculty-and-researchers/profile/person/kaack"
@@ -42,8 +37,7 @@ people:
   # site.sync_public_site) - TAs are cohort-scoped, so their cards come from each
   # cohort's own classroom-config/people.yml. These two are therefore inert here.
   teaching_assistants:
-    - github_handle: "demo-cfusarbassini-placeholder"
-      name: "Chiara Fusar Bassini"
+    - name: "Chiara Fusar Bassini"
       title: "PhD candidate, Data Science Lab"
       photo: "https://github.com/chiara-fb.png"
       url: "https://www.hertie-school.org/en/who-we-are/profile/person/fusar-bassini"
@@ -56,3 +50,4 @@ people:
       url: "https://www.hertie-school.org/en/who-we-are/profile/person/baker"
       start: "2026-08-01"
       end: "2027-01-31"
+
