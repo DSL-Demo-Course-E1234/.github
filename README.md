@@ -1,15 +1,15 @@
 # Machine Learning Fundamentals (Demo) - course control panel
 
-This is the **`.github` repo** for the `DSL-Demo-Course-E1234` course org - the control panel faculty & instructors use to run
+This is the **`.github` repo** for the `hertie-dsl-demo-course-e1234` course org - the control panel faculty & instructors use to run
 the course. **You never need a CLI or to write code: every action is a clickable UI button.**
 
 ## Run an action
 
-Open the **[Actions tab](https://github.com/DSL-Demo-Course-E1234/.github/actions)**, pick a workflow, and click
+Open the **[Actions tab](https://github.com/hertie-dsl-demo-course-e1234/.github/actions)**, pick a workflow, and click
 **Run workflow**. Buttons only show if you have write access - you're in this org's
 `course-admin` team (declared here, course-wide), or a cohort's `instructors-<tag>` team
 (declared in that cohort's own `classroom-config/people.yml`). The full, annotated list of
-actions is on the **[org home page](https://github.com/DSL-Demo-Course-E1234)**.
+actions is on the **[org home page](https://github.com/hertie-dsl-demo-course-e1234)**.
 
 ## Typical flow
 
