@@ -11,6 +11,7 @@ on:
         description: "Target cohort org"
         required: true
         type: choice
+        default: "hertie-dsl-demo-f2027"
         options:
           - hertie-dsl-demo-f2025
           - hertie-dsl-demo-f2026
@@ -19,6 +20,7 @@ on:
         description: "Course-org repo to hand out from"
         required: true
         type: choice
+        default: "assignment-3-project-f2026"
         options:
           - assignment-1-f2026
           - assignment-2-f2026
