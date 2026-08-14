@@ -18,9 +18,9 @@ _This page is auto-generated; edits will be overwritten on the next refresh._
 List of cohort orgs registered to receive releases from this course org. _Auto-discovered from the
 `cohort-courses-pages.yml` registry_:
 
-- [DSL-Demo-f2025](https://github.com/DSL-Demo-f2025)
-- [DSL-Demo-f2026](https://github.com/DSL-Demo-f2026)
-- [DSL-Demo-f2027](https://github.com/DSL-Demo-f2027)
+- [hertie-dsl-demo-f2025](https://github.com/hertie-dsl-demo-f2025)
+- [hertie-dsl-demo-f2026](https://github.com/hertie-dsl-demo-f2026)
+- [hertie-dsl-demo-f2027](https://github.com/hertie-dsl-demo-f2027)
 
 ## Repositories
 
