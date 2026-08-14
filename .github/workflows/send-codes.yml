@@ -13,9 +13,9 @@ on:
         required: true
         type: choice
         options:
-          - DSL-Demo-f2025
-          - DSL-Demo-f2026
-          - DSL-Demo-f2027
+          - hertie-dsl-demo-f2025
+          - hertie-dsl-demo-f2026
+          - hertie-dsl-demo-f2027
       dry_run:
         description: "Preview the codes + emails - write nothing, send nothing"
         type: boolean
